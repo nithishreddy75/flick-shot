@@ -1,0 +1,29 @@
+
+# Frontend dependencies and build files
+frontend/node_modules/
+frontend/dist/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Keep database credentials out of GitHub
+backend/src/main/resources/application.properties
+backend/src/main/resources/application.yml
+
+# Java build output
+backend/target/
+
+# IDE and system files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
