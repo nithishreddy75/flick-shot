@@ -2,7 +2,11 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api",
+  baseURL:
+    import.meta.env.VITE_API_BASE_URL ||
+    (import.meta.env.DEV
+      ? "http://localhost:8080/api"
+      : "https://flick-shot-backend.onrender.com/api"),
   timeout: 15000,
   headers: {
     "Content-Type": "application/json",
@@ -26,9 +30,7 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Do not automatically log the user out here.
-      // Login and token-expiry behavior should be handled
-      // by the existing authentication flow.
+      // Keep existing authentication handling.
     }
 
     return Promise.reject(error);
